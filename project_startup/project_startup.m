@@ -5,6 +5,7 @@ and file paths to make sure all of the codebase features work correctly.
 
 clc
 close all
+clear
 
 %% Add files to search path
 
@@ -83,4 +84,51 @@ end
 if(~isfolder(closedown_path))
     error("Missing Project Closedown Path, please reclone the Repo.")
 end
+
+if(~isfolder(user_data_path))
+    fprintf("Folder for data outputs is missing. Creating it now. \n")
+    mkdir(user_data_path)
+end
+
+%create a variable
+prj_path_list.root_path = root_path;
+prj_path_list.src_path = src_path;
+prj_path_list.temp_path = temp_path;
+prj_path_list.inits_path = inits_path;
+prj_path_list.user_data_path = user_data_path;
+prj_path_list.cache_path = cache_path;
+prj_path_list.asv_path = asv_path;
+prj_path_list.startup_path = startup_path;
+prj_path_list.closedown_path = closedown_path;
+save(fullfile(startup_path,"prj_path_list.mat"),"prj_path_list",'-mat');
+
+cd(prj_path_list.root_path)
+fprintf("Filepaths configured successfully. Moving you to the project root folder. \n")
+
+%% Configure file path for automatically generated temporary files
+
+try
+    Simulink.fileGenControl('set',...
+        'CacheFolder',cache_path,....
+        'CodeGenFolder',cache_path);
+    fprintf("Cache and CodeGen file paths are set up.\n")
+catch
+    fprintf("Unable to configure cache and codegen files. You might be in a OneDrive file, move out of it.\n");
+end
+
+Simulink.fileGenControl('set',...
+    'CacheFolder',cache_path,...
+    'CodeGenFolder',cache_path);
+prj.SimulinkCacheFolder = cache_path;
+prj.SimulinkCodeGenFolder = cache_path;
+
+fprintf("Cache and CodeGen file paths are setup.\n");
+
+%% Clear Temporary folder for a clean workspace if there is anything in it.
+
+%suppress warnings for removed temp files
+warningState = warning('off','all');
+clearTemp();
+warning(warningState);
+fprintf("Temporary files have been cleared out.\n");
 
