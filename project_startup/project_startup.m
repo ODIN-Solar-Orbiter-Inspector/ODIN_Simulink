@@ -19,7 +19,7 @@ end
 %Get all relevant paths to the project
 root_path = prj.RootFolder;
 src_path = fullfile(root_path,'src');
-temp_path = fullfile(src_path,'temp');
+temclearTempp_path = fullfile(src_path,'temp');
 inits_path = fullfile(src_path,'inits');
 user_data_path = temp_path;
 startup_path = fullfile(root_path,'project_startup');%add all necessary paths to the project path so it can see them
@@ -128,7 +128,7 @@ fprintf("Cache and CodeGen file paths are setup.\n");
 
 %suppress warnings for removed temp files
 warningState = warning('off','all');
-clearTemp();
+clear_temp();
 warning(warningState);
 fprintf("Temporary files have been cleared out.\n");
 
