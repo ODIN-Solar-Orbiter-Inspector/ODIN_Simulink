@@ -19,7 +19,7 @@ end
 %Get all relevant paths to the project
 root_path = prj.RootFolder;
 src_path = fullfile(root_path,'src');
-temclearTempp_path = fullfile(src_path,'temp');
+temp_path = fullfile(src_path,'temp');
 inits_path = fullfile(src_path,'inits');
 user_data_path = temp_path;
 startup_path = fullfile(root_path,'project_startup');%add all necessary paths to the project path so it can see them
