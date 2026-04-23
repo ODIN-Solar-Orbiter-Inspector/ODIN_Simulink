@@ -24,3 +24,4 @@ Define Operational modes because they could have different requirements.
         [ ]The directionality of the antenna will inform the ADCS/GNC requirements
         [ ]Is that angle a solid angle?
 
+
