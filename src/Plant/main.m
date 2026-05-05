@@ -15,7 +15,7 @@ T_ext = [0;0;0]; %External torque
 I_sc = diag([10000 30000 30000]); %S/C inertia matrix
 
 tdur = 500; %Simulation duration
-dt_sim = 0.1; %Integration time step
+dt_sim = 0.1; %Integration time step, 10 Hz
 
 %Run Simulink model
 sim('SADC1.slx',tdur);
@@ -46,7 +46,9 @@ LAMBDA = (w_bi0(1)*(I_sc(1,1)-I_sc(3,3)))/I_sc(2,2);
 
 tout1 = transpose(tout);
 
-w_an = [w_bi0(1)+0*tout1; (w_bi0(2)*cos(LAMBDA*tout1) - w_bi0(3)*sin(LAMBDA*tout1)) ; (w_bi0(3)*cos(LAMBDA*tout1) + w_bi0(2)*sin(LAMBDA*tout1))];
+w_an = [w_bi0(1)+0*tout1;... 
+    (w_bi0(2)*cos(LAMBDA*tout1) - w_bi0(3)*sin(LAMBDA*tout1));...
+    (w_bi0(3)*cos(LAMBDA*tout1) + w_bi0(2)*sin(LAMBDA*tout1))];
 w_an = w_an*r2d;
 w_an = transpose(w_an);
 
