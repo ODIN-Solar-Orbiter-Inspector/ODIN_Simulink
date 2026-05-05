@@ -24,13 +24,14 @@ end
 sc_body_width        = scale*0.5;             % half width of s/c body, assumed to be rectangular box
 sc_colour            = 0.6*[1 1 1];           % colour of main s/c body
 sc_transparency      = 0.5;                   % transparency of s/c body
+sc_transparency1      = 0;
 
 % connecting cylinder to payload, aligned with Z axis
 sc_cyl2_radius       = sc_body_width*0.9;     % radius in XY plane
 sc_cyl2_height       = sc_body_width*0.5;     % along Z axis direction
 sc_cyl2_z_offset     = sc_body_width;         % baseplate offset w.r.t XY plane
 sc_cyl2_colour       = 'y';
-sc_cyl2_transparency = sc_transparency;
+sc_cyl2_transparency = sc_transparency1;
 sc_cyl2_mesh_points  = 8;
 
 % payload dish
@@ -38,7 +39,7 @@ dish_radius          = sc_body_width;
 dish_phi             = 20*pi/180*scale;
 dish_base_offset     = [0 0 sc_body_width + sc_cyl2_height];
 dish_colour          = 'y';
-dish_transparency    = sc_transparency;
+dish_transparency    = sc_transparency1;
 dish_mesh_points     = 20;
 dish_tripod_linewidth= 1;
 dish_tripod_colour   = 0*[1 1 1];
@@ -48,7 +49,7 @@ sc_cyl1_radius       = sc_body_width;
 sc_cyl1_height       = sc_body_width*2;
 sc_cyl1_z_offset     = sc_body_width + sc_cyl2_height + 2*dish_radius/scale*(1-cos(dish_phi));
 sc_cyl1_colour       = 'w';
-sc_cyl1_transparency = sc_transparency;
+sc_cyl1_transparency = sc_transparency1;
 sc_cyl1_mesh_points  = 20;
 
 % solar arrays
