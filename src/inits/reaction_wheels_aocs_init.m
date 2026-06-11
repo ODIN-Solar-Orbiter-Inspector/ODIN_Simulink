@@ -12,9 +12,9 @@
 
 % Dependencies: Simulink
 
-close all
-clear
-clc
+close all;
+clear;
+clc;
 
 %% GIVEN %%
 
